@@ -1,22 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-    <!--el figma es: https://www.figma.com/file/UlM60eDDxOgPsN48cyRckU/Portfolio?node-id=70%3A38-->
+<!--el figma es: https://www.figma.com/file/UlM60eDDxOgPsN48cyRckU/Portfolio?node-id=70%3A38-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Biblioteca">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cambay&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilo.css">
     <link rel="shortcut icon" href="./assets/junco rc.svg" type="image/x-icon">
 
     <title>Biblioteca</title>
 </head>
+
 <body>
     <header>
-        <button id="theme-toggle" class="boton-tema" type="button">
-                <img id="boton tema" src="./assets/boton rc.svg" width="50" height="50"/>
-        </button>
-        
+
     </header>
+    <main>
+        <section class="catalogo">
+            <p>
+                Catálogo
+            </p>
+        </section>
+        <table border="1">
+            <tr>
+                <th>Sinatura</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Editorial</th>
+                <th>Año P.</th>
+                <th>Disponibilidad</th>
+                <th>pedir</th>
+            </tr>
+            <tr>
+                <!-- aquí añadiriía la lista generada de cada libro, buscar-->
+                <td>1</td>
+                <td>a</td>
+                <td>bb</td>
+                <td>trt</td>
+                <td>1233</td>
+                <td>si</td>
+                <td>
+                    <form action="" method="get">
+                        <input type="checkbox" name="addpedido" id="addpedido">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </main>
+</body>
+
+</html>
