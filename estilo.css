@@ -15,6 +15,7 @@
     --icon-hue-shift: invert(5%) sepia(10%) saturate(7495%) hue-rotate(182deg) brightness(95%) contrast(105%);
     --link-icon-hue-shift: invert(94%) sepia(31%) saturate(4501%) hue-rotate(319deg) brightness(103%) contrast(102%);
 
+
 }
 
 body {
@@ -28,35 +29,78 @@ body {
     line-height: 105%;
     text-align: justify;
     overflow-x: hidden;
-
+    display: grid;
 }
-header{
+
+header {
     background-color: var(--color-dark);
-    box-sizing: content-box;
+    margin: 0;
+    /*box-sizing: content-box;
     width: 100% ;
     height: 60px;
     position: absolute;
     top: 0;
-    left: 0;
-
+    left: 0;*/
 }
+
+.relleno {}
+
+.login {}
+
 .catalogo {
+
     color: var(--color-primary);
     font-size: var(--typography-size-h1);
     letter-spacing: var(--typography-spacing-h1);
     text-align: center;
     line-height: 110%;
     font-weight: 700;
-    margin: 4rem 0 1rem 0;
+    margin: 60px auto 60px auto;
     border: 10px solid #245B5F;
     box-sizing: border-box;
     width: 800px;
     height: 60px;
     border-radius: 5000px;
+
+
 }
 
-th {
-    font-size: var(--typography-size-th);
-    font-weight: 700;
-    line-height: 110%;
+.tabla_catalogo {
+    border-collapse: collapse;
+    border: 7.5px solid var(--color-dark);
+    border-radius: 30px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: 0px auto 60px auto;
 }
+
+.tabla_catalogo thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.tabla_catalogo th, .tabla_catalogo td {
+    padding: 12px 75px;
+}
+
+.tabla_catalogo tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.tabla_catalogo tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.tabla_catalogo tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.tabla_catalogo tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+footer {}
