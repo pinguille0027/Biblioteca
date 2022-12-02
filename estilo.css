@@ -6,7 +6,7 @@
     --typography-size-h1: 32px;
     --typography-size-th: 27px;
     --typography-size-login: 22px;
-    --typography-size-body: 17px;
+    --typography-size-body: 22px;
 
     --typography-spacing-h1: 0.04rem;
     --typography-spacing-h2: 0.05rem;
@@ -89,6 +89,7 @@ background-color: var(--color-background);
 
 .tabla_catalogo thead tr {
     color: var(--color-primary);
+    font-size: var(--typography-size-th);
 }
 
 .tabla_catalogo th, .tabla_catalogo td {
@@ -113,4 +114,6 @@ background-color: var(--color-background);
     color: #009879;
 }
 
-footer {}
+footer {
+    text-align: center;
+}
