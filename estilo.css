@@ -88,9 +88,7 @@ background-color: var(--color-background);
 }
 
 .tabla_catalogo thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+    color: var(--color-primary);
 }
 
 .tabla_catalogo th, .tabla_catalogo td {
@@ -103,6 +101,7 @@ background-color: var(--color-background);
 
 .tabla_catalogo tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
+    border-collapse: collapse;
 }
 
 .tabla_catalogo tbody tr:last-of-type {
