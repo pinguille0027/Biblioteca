@@ -100,10 +100,6 @@ background-color: var(--color-background);
     border-bottom: 1px solid #dddddd;
 }
 
-.tabla_catalogo tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-    border-collapse: collapse;
-}
 
 .tabla_catalogo tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
@@ -111,9 +107,15 @@ background-color: var(--color-background);
 
 .tabla_catalogo tbody tr.active-row {
     font-weight: bold;
-    color: #009879;
+    color: #f3f3f3;
 }
 
 footer {
     text-align: center;
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    grid-row: auto auto;
 }
+    .f_biblio{
+
+    }
