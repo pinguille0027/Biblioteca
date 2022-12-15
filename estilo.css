@@ -20,10 +20,12 @@
 
 body {
     width: 100vw;
-
+    display: grid;
+    grid-template-areas: 'cab' 'cat' 'tab' 'pie';
+    grid-template-rows: 6.7% 6.7% 55.6% 10%;
+    justify-content: center;
     background-color: var(--color-background);
     color: var(--color-primary);
-
     font-size: var(--typography-size-body);
     letter-spacing: var(--typography-spacing-body);
     line-height: 105%;
@@ -42,6 +44,7 @@ header {
     padding: 10px;
     top: 0;
     left: 0;
+    grid-area: cab;
     display: grid;
     grid-template-areas: nada login;
     grid-template-columns: 88.2% auto;
@@ -58,7 +61,7 @@ background-color: var(--color-background);
 }
 
 .catalogo {
-
+    grid-area: cat;
     color: var(--color-primary);
     font-size: var(--typography-size-h1);
     letter-spacing: var(--typography-spacing-h1);
@@ -76,6 +79,7 @@ background-color: var(--color-background);
 }
 
 .tabla_catalogo {
+    grid-area: tab;
     border-collapse: collapse separate;
     border: 7.5px solid var(--color-dark);
     box-sizing: border-box;
@@ -111,11 +115,25 @@ background-color: var(--color-background);
 }
 
 footer {
+    grid-area: pie;
     text-align: center;
     display: grid;
-    grid-template-columns: auto auto auto ;
+    grid-template-areas: biblio;
     grid-row: auto auto;
+    justify-content: space-between;
+    
+    margin-bottom: 5px;
 }
     .f_biblio{
+        grid-column: 1/4;
+        text-align: center;
+    }
+    .f_sn{
+        margin-left: 20px;
+    }
+    .f_-{
 
+    }
+    .f_ac{
+        margin-right: 20px;
     }
