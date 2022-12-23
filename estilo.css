@@ -17,18 +17,19 @@
 
 
 }
-
-body {
-    width: 100vw;
-    display: grid;
-    grid-template-areas: 'cab' 'cat' 'tab' 'pie';
-    grid-template-rows: 6.7% 6.7% 55.6% 10%;
-    justify-content: center;
+body{
     background-color: var(--color-background);
     color: var(--color-primary);
     font-size: var(--typography-size-body);
     letter-spacing: var(--typography-spacing-body);
     line-height: 105%;
+    height: 900px;
+}
+main {
+    width: 100vw;
+    display: grid;
+    grid-template-areas: 'cab cab cab' 'cat cat cat' 'tab tab tab' ;
+    justify-content: center;
     text-align: justify;
     overflow-x: hidden;
     
@@ -115,25 +116,28 @@ background-color: var(--color-background);
 }
 
 footer {
-    grid-area: pie;
-    text-align: center;
+    justify-content: center, baseline;
+    margin-top: 60%;
     display: grid;
-    grid-template-areas: biblio;
-    grid-row: auto auto;
-    justify-content: space-between;
-    
-    margin-bottom: 5px;
+    grid-template-areas: 'biblio biblio biblio' 'sn guion acad';
 }
     .f_biblio{
-        grid-column: 1/4;
+        grid-area: biblio ;
+        color: var(--color-primary);
+        font-size: var(--typography-size-th);
         text-align: center;
     }
     .f_sn{
-        margin-left: 20px;
+        grid-area: sn;
+        text-align: right;
     }
     .f_-{
-
+        grid-area: guion;
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
     }
     .f_ac{
-        margin-right: 20px;
+        grid-area: acad;
+        text-align: left;
     }
