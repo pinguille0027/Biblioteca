@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!--el figma es: https://www.figma.com/file/UlM60eDDxOgPsN48cyRckU/Portfolio?node-id=70%3A38-->
 
 <head>
     <meta charset="UTF-8">
@@ -19,76 +18,88 @@
         </button>
     </header>
     <main>
-        <section class="catalogo">
-            Catálogo
+        <section>
+            <h2 class="catalogo">Catálogo</h2>
+            <table class="tabla_catalogo">
+                <thead>
+                    <tr>
+                        <th>Sinatura</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Editorial</th>
+                        <th>Año P.</th>
+                        <th>Disponibilidad</th>
+                        <th>pedir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- aquí añadiriía la lista generada de cada libro, buscar-->
+                        <td>1</td>
+                        <td>a</td>
+                        <td>bb</td>
+                        <td>trt</td>
+                        <td>1233</td>
+                        <td>si</td>
+                        <td>
+                            <form action="" method="get">
+                                <input type="checkbox" name="addpedido" id="addpedido">
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- aquí añadiriía la lista generada de cada libro, buscar-->
+                        <td>1</td>
+                        <td>a</td>
+                        <td>bb</td>
+                        <td>trt</td>
+                        <td>1233</td>
+                        <td>si</td>
+                        <td>
+                            <form action="" method="get">
+                                <input type="checkbox" name="addpedido" id="addpedido">
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- aquí añadiriía la lista generada de cada libro, buscar-->
+                        <td>1</td>
+                        <td>a</td>
+                        <td>bb</td>
+                        <td>trt</td>
+                        <td>1233</td>
+                        <td>si</td>
+                        <td>
+                            <form action="" method="get">
+                                <input type="checkbox" name="addpedido" id="addpedido">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"> paginas </td>
+                        <td colspan="5"><input type="submit" value=">>" id="b_enviar"></td>
+                    </tr>
+                </tfoot>
+            </table>
         </section>
-        <table class="tabla_catalogo">
-            <thead>
-                <tr>
-                    <th>Sinatura</th>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Editorial</th>
-                    <th>Año P.</th>
-                    <th>Disponibilidad</th>
-                    <th>pedir</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <!-- aquí añadiriía la lista generada de cada libro, buscar-->
-                    <td>1</td>
-                    <td>a</td>
-                    <td>bb</td>
-                    <td>trt</td>
-                    <td>1233</td>
-                    <td>si</td>
-                    <td>
-                        <form action="" method="get">
-                            <input type="checkbox" name="addpedido" id="addpedido">
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <!-- aquí añadiriía la lista generada de cada libro, buscar-->
-                    <td>1</td>
-                    <td>a</td>
-                    <td>bb</td>
-                    <td>trt</td>
-                    <td>1233</td>
-                    <td>si</td>
-                    <td>
-                        <form action="" method="get">
-                            <input type="checkbox" name="addpedido" id="addpedido">
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <!-- aquí añadiriía la lista generada de cada libro, buscar-->
-                    <td>1</td>
-                    <td>a</td>
-                    <td>bb</td>
-                    <td>trt</td>
-                    <td>1233</td>
-                    <td>si</td>
-                    <td>
-                        <form action="" method="get">
-                            <input type="checkbox" name="addpedido" id="addpedido">
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="2"> paginas </td>
-                    <td colspan="5"><input type="submit" value=">>" id="b_enviar"></td>
-                </tr>
-            </tfoot>
-        </table>
     </main>
-    <footer>
-        <p class="f_biblio">Biblioteca</p>
-        <p class="f_sn"><a href="">Sobre nosotros</a></p> <p class="f_-">-</p> <p class="f_ac"><a href="">acceso administradores</a></p>
+    <footer class="footer">
+        <!-- BEM ( Block Element Modifier )-->
+        <!-- block--element__modifier -->
+        <div class="footer--container">
+            <p class="footer--biblio">Biblioteca</p>
+            <p class="footer--sn">
+                <a href="">Sobre nosotros</a>
+            </p>
+            <span id="hyphen" class="footer--hyphen footer--hyphen__error">-</span>
+            <p class="footer--ac">
+                <a class="footer--ac-link" href="">
+                    acceso administradores
+                </a>
+            </p>
+        </div>
     </footer>
 </body>
 

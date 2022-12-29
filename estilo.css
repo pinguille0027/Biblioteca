@@ -1,9 +1,10 @@
 :root {
+    font-size: 16px;
     --color-primary: #1E1E1E;
     --color-dark: #245B5F;
     --color-background: #ABE6EA;
 
-    --typography-size-h1: 32px;
+    --typography-size-h1: 2rem;
     --typography-size-th: 27px;
     --typography-size-login: 22px;
     --typography-size-body: 22px;
@@ -11,54 +12,62 @@
     --typography-spacing-h1: 0.04rem;
     --typography-spacing-h2: 0.05rem;
     --typography-spacing-body: 0.02rem;
-
-    --icon-hue-shift: invert(5%) sepia(10%) saturate(7495%) hue-rotate(182deg) brightness(95%) contrast(105%);
-    --link-icon-hue-shift: invert(94%) sepia(31%) saturate(4501%) hue-rotate(319deg) brightness(103%) contrast(102%);
-
-
 }
-body{
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 1.5px solid red;
+}
+
+body {
+    height: 100vh;
     background-color: var(--color-background);
     color: var(--color-primary);
     font-size: var(--typography-size-body);
     letter-spacing: var(--typography-spacing-body);
     line-height: 105%;
-    height: 900px;
+    position: relative;
 }
+
 main {
-    width: 100vw;
-    display: grid;
-    grid-template-areas: 'cab cab cab' 'cat cat cat' 'tab tab tab' ;
-    justify-content: center;
-    text-align: justify;
+    width: 100%;
     overflow-x: hidden;
-    
 }
 
 header {
     background-color: var(--color-dark);
-    margin: 0;
-    box-sizing: content-box;
-    width: 100% ;
-    height: 60px;
-    position: absolute;
-    padding: 10px;
-    top: 0;
-    left: 0;
-    grid-area: cab;
-    display: grid;
-    grid-template-areas: nada login;
-    grid-template-columns: 88.2% auto;
+    width: 100%;
+    height: 5rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 .login {
-grid-area: login;
-margin:0px auto auto 4%;
-border: 1px solid var(--color-background);
-border-radius: 30px;
+    border: 1px solid var(--color-background);
+    border-radius: 30px;
+    padding-inline: 1rem;
+    cursor: pointer;
 
-font-size: var(--typography-size-login);
-background-color: var(--color-background);
+    font-size: var(--typography-size-login);
+    background-color: var(--color-background);
+
+    transition: background-color 200ms ease-in;
+    transition: transform 150ms ease-in;
+    transition: box-shadow 150ms ease-in;
+}
+
+.login:hover {
+    background-color: blanchedalmond;
+}
+
+.login:active {
+    background-color: rgb(243, 192, 150);
+    box-shadow: 0.5rem 0.2rem 0.5rem var(--color-primary);
+    transform: translateY(0.2rem);
 }
 
 .catalogo {
@@ -75,8 +84,6 @@ background-color: var(--color-background);
     width: 800px;
     height: 60px;
     border-radius: 5000px;
-
-
 }
 
 .tabla_catalogo {
@@ -97,7 +104,8 @@ background-color: var(--color-background);
     font-size: var(--typography-size-th);
 }
 
-.tabla_catalogo th, .tabla_catalogo td {
+.tabla_catalogo th,
+.tabla_catalogo td {
     padding: 12px 75px;
 }
 
@@ -115,29 +123,45 @@ background-color: var(--color-background);
     color: #f3f3f3;
 }
 
-footer {
-    justify-content: center, baseline;
-    margin-top: 60%;
-    display: grid;
-    grid-template-areas: 'biblio biblio biblio' 'sn guion acad';
+.footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
-    .f_biblio{
-        grid-area: biblio ;
-        color: var(--color-primary);
-        font-size: var(--typography-size-th);
-        text-align: center;
-    }
-    .f_sn{
-        grid-area: sn;
-        text-align: right;
-    }
-    .f_-{
-        grid-area: guion;
-        margin-left: 20px;
-        margin-right: 20px;
-        text-align: center;
-    }
-    .f_ac{
-        grid-area: acad;
-        text-align: left;
-    }
+
+.footer--container {
+    width: 100%;
+    display: grid;
+    justify-content: center, baseline;
+    grid-template-areas: '. biblio .' 'sn guion acad';
+}
+
+.footer--biblio {
+    grid-area: biblio ;
+    color: var(--color-primary);
+    font-size: var(--typography-size-th);
+    text-align: center;
+}
+.footer--sn {
+    grid-area: sn;
+    text-align: center;
+}
+.footer--hyphen {
+    grid-area: guion;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.footer--hyphen__error{
+    color: red;
+}
+.footer--hyphen__success{
+    color: green;
+}
+.footer--ac {
+    grid-area: acad;
+    text-align: center;
+}
