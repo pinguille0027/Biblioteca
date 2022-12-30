@@ -4,7 +4,7 @@
 	USE Biblioteca;
     
 /*CREAR TABLAS Y PROHIBIMOS VALORES NULOS*/
-	CREATE TABLE Catalogo(
+	CREATE TABLE Libros(
         Sinatura INT NOT NULL AUTO_INCREMENT,
         Titulo VARCHAR (50) NOT NULL,
         Autor VARCHAR (30),
@@ -38,10 +38,10 @@
 
 /*Foraneas*/
     ALTER TABLE Pedidos ADD CONSTRAINT FK_idus FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id);																			
-	ALTER TABLE Pedidos ADD CONSTRAINT FK_idlib FOREIGN KEY (Libro_prestado) REFERENCES Catalogo(Sinatura);
+	ALTER TABLE Pedidos ADD CONSTRAINT FK_idlib FOREIGN KEY (Libro_prestado) REFERENCES Libros(Sinatura);
 
 /*Valores*/
-    INSERT INTO Catalogo (Titulo, Autor, Editorial, Anno_de_Publicacion, Disponibilidad) 
+    INSERT INTO Libros (Titulo, Autor, Editorial, Anno_de_Publicacion, Disponibilidad) 
     VALUES	( 'A Esmorga',    'Eduardo Blanco Amor', 'Galaxia', 1960, 1),
             ( 'Crónica de una muerte anunciada',    'Gabriel García Marquez', 'santillana', 1965, 0),
             ( 'Cantares Galegos',    'Rosalía de Castro', 'Galaxia', 1865, 0),
