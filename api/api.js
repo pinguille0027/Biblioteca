@@ -1,11 +1,13 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const path = require('path');
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const app = express();
+const port = process.env.PORT || 8080;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// sendFile will go here
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '../cli/index.html'));
+});
+
+app.listen(port);
+console.log('Server started at http://localhost:' + port);

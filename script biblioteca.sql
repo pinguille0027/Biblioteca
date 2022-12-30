@@ -41,7 +41,7 @@
 	ALTER TABLE Pedidos ADD CONSTRAINT FK_idlib FOREIGN KEY (Libro_prestado) REFERENCES Catalogo(Sinatura);
 
 /*Valores*/
-    INSERT INTO Catalogo (Titulo, Autor, Aditorial, Anno_de_Publicacion, Disponibilidad) 
+    INSERT INTO Catalogo (Titulo, Autor, Editorial, Anno_de_Publicacion, Disponibilidad) 
     VALUES	( 'A Esmorga',    'Eduardo Blanco Amor', 'Galaxia', 1960, 1),
             ( 'Crónica de una muerte anunciada',    'Gabriel García Marquez', 'santillana', 1965, 0),
             ( 'Cantares Galegos',    'Rosalía de Castro', 'Galaxia', 1865, 0),
