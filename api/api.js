@@ -22,6 +22,30 @@ const libros = [
     editorial: 'None',
     annoDePublicacion: 0,
     disponibilidad: false
+  },
+  {
+    sinatura: 1235,
+    titulo: 'Biblia',
+    autor: null,
+    editorial: 'None',
+    annoDePublicacion: 0,
+    disponibilidad: false
+  },
+  {
+    sinatura: 1235,
+    titulo: 'Biblia',
+    autor: null,
+    editorial: 'None',
+    annoDePublicacion: 0,
+    disponibilidad: false
+  },
+  {
+    sinatura: 1235,
+    titulo: 'Biblia',
+    autor: null,
+    editorial: 'None',
+    annoDePublicacion: 0,
+    disponibilidad: false
   }
 ];
 
