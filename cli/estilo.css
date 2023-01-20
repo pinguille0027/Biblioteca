@@ -104,9 +104,12 @@ header {
     font-size: var(--typography-size-th);
 }
 
-.tabla_catalogo th,
+/*.tabla_catalogo th,
 .tabla_catalogo td {
     padding: 12px 75px;
+}*/
+.tabla_catalogo td{
+    font-size: var(--typography-size-body);
 }
 
 .tabla_catalogo tbody tr {

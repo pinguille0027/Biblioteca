@@ -20,35 +20,34 @@
     <main>
         <section>
             <h2 class="catalogo">Catálogo</h2>
-            <table class="tabla_catalogo" id="tcatalogo">
-                <thead>
-                    <tr>
-                        <th>Sinatura</th>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Editorial</th>
-                        <th>Año P.</th>
-                        <th>Disponibilidad</th>
-                        <th>pedir</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2"> paginas </td>
-                        <td colspan="5"><input type="submit" value=">>" id="b_enviar"></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </section>
-        <section id="example">
-            <button id="api_call_button"> Call api </button>
-            <button id="api_del_button"> del api </button>
-            <pre id="pre_content"></pre>
+            <form id="form_pedido">
+                <table class="tabla_catalogo">
+                    <thead id="tcatalogo">
+                        <tr>
+                            <th>Sinatura</th>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Editorial</th>
+                            <th>Año P.</th>
+                            <th>Disponibilidad</th>
+                            <th>pedir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"> paginas </td>
+                            <td colspan="5"> 
+                                <input type="submit" value=">>" id="b_enviar">
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
         </section>
     </main>
     <footer class="footer">

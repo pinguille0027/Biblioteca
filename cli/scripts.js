@@ -10,9 +10,9 @@
         pre.innerHTML = JSON.stringify(json, null, 2);
     });
 })*/
-function showDataInTable(data) {
+function showDataInTable(librosJson) {
     const table = document.getElementById('tcatalogo');
-    data.forEach(item => {
+    librosJson.forEach(item => {
       const row = document.createElement('tr');
       const sinaturaCell = document.createElement('td');
       sinaturaCell.innerHTML = item.Sinatura;
@@ -27,9 +27,11 @@ function showDataInTable(data) {
       const dispoCell = document.createElement('td');
       dispoCell.innerHTML = item.Disponibilidad ? "Disponible" : "No disponible";
       const buttonCell = document.createElement('td');
-      const button = document.createElement('button');
-      button.innerHTML = "Pedir";
-      buttonCell.appendChild(button);
+      const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = item.Titulo;
+        checkbox.value = item.Sinatura;
+      buttonCell.appendChild(checkbox);
       row.appendChild(sinaturaCell);
       row.appendChild(tituloCell);
       row.appendChild(autorCell);
@@ -40,12 +42,53 @@ function showDataInTable(data) {
       table.appendChild(row);
     });
   };
+
 window.addEventListener('load', async () => {
     const response = await fetch('/libros');
-        if (!response.ok) {return;}
-    const data = await response.json();
-    showDataInTable(data);
+    if (!response.ok) {return;}
+    const librosJson = await response.json();
+    showDataInTable(librosJson);
 });
+
+
+//envio del pedido
+    const bookForm = document.getElementById("form_pedido");
+  
+    // Set the order date and due date on form submit
+    bookForm.addEventListener("submit", async event => {
+      event.preventDefault();
+      const selectedBooks = [...bookForm.elements].filter(element => element.checked);
+      for (const book of selectedBooks) {
+        const data = {
+          sinatura: book.value,
+          titulo: book.name,
+          fechaPedido: new Date().toISOString(),
+          fechaDevolucion: new Date(new Date().getTime() + 15).toISOString(),
+          nombreUsuario: 'Ramona',
+          idUsuario: '1'
+        };
+        try {
+          const response = await fetch('/pedido', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+          });
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          console.log(`Libro ${book.name} pedido correctamente`);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    });
+    
+    
+    
+    
+
+
+
 /*const button = document.getElementById('api_call_button');
 button.addEventListener('click', async () => {
     console.log('addclick');

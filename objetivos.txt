@@ -1,0 +1,11 @@
+1- hacer una vista presentable *
+2- diseñar la bbdd *
+3- que los libros se muestren en el cliente *
+4- que el cliente pueda hacer un Pedido
+5- que el cliente pueda consultar sus pedidos
+6- que el estatus de los libros cambie segun esten pedidos o no
+7- que se puedan reservar libros no disponibles
+8- servicio de autentificación del cliente
+9- crear el rol de administrador y sus vistas de gestión
+10- que el administrador pueda logear
+11- que el administrador pueda crear modificar y eliminar usuarios, libros y pedidos 
