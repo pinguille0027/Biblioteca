@@ -61,10 +61,6 @@ window.addEventListener('load', async () => {
       for (const book of selectedBooks) {
         const data = {
           sinatura: book.value,
-          titulo: book.name,
-          fechaPedido: new Date().toISOString(),
-          fechaDevolucion: new Date(new Date().getTime() + 15).toISOString(),
-          nombreUsuario: 'Ramona',
           idUsuario: '1'
         };
         try {

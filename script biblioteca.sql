@@ -28,9 +28,7 @@
     CREATE TABLE Pedidos(
         Id INT  NOT NULL AUTO_INCREMENT,
         Id_Usuario INT (5) NOT NULL,
-        Nombre_Usuario VARCHAR (30) NOT NULL,
         Libro_prestado INT   NOT NULL,
-        Titulo_Libro VARCHAR (30) NOT NULL,
         Fecha_Pedido DATETIME   NOT NULL,
         Fecha_Devolucion DATETIME NOT NULL,
         PRIMARY KEY(Id)

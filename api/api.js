@@ -24,19 +24,21 @@ app.get('/libros', async(req, res) => {
 
 app.post('/pedido', async (req, res) => {
   try {
-    const { sinatura, titulo, fechaPedido, fechaDevolucion, nombreUsuario, idUsuario } = req.body;
-    const newBook = await prisma.Pedidos.create({
+    const { sinatura, idUsuario } = req.body;
+   
+    
+    const newBook = await prisma.pedidos.create({
       data: {
-        Id_Usuario: idUsuario,
-        Nombre_Usuario: nombreUsuario,
-        Libro_prestado: sinatura,
-        Titulo_Libro: titulo,
-        Fecha_Pedido: fechaPedido,
-        Fecha_Devolucion: fechaDevolucion
+        
+        Fecha_Pedido: new Date(),
+        Fecha_Devolucion: new Date(new Date().getTime() + (15 * 24 * 60 * 60 * 1000)),
+        Usuario: {connect: { Id: Number(idUsuario)}}, 
+        Libros: { connect: { Sinatura: Number(sinatura) }}
       }
     });
     res.json(newBook);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 });

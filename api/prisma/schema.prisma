@@ -20,9 +20,7 @@ model Libros {
 model Pedidos {
   Id               Int      @id @default(autoincrement())
   Id_Usuario       Int
-  Nombre_Usuario   String   @db.VarChar(30)
   Libro_prestado   Int
-  Titulo_Libro     String   @db.VarChar(30)
   Fecha_Pedido     DateTime @db.DateTime(0)
   Fecha_Devolucion DateTime @db.DateTime(0)
   Libros           Libros   @relation(fields: [Libro_prestado], references: [Sinatura], onDelete: NoAction, onUpdate: NoAction, map: "FK_idlib")
