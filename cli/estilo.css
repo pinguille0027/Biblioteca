@@ -70,6 +70,29 @@ header {
     transform: translateY(0.2rem);
 }
 
+.ocultar {
+    display: none;
+}
+
+.mostrar{
+ background-color: rgba(24, 24, 24, 1);
+ width: 100%;
+ height: 100%;
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 1;
+ display: flex;
+}
+#formLogin{
+    justify-content: center, center;
+    box-sizing: border-box;
+    width: calc(fit-content * 1.2);
+    height: calc(fit-content * 1.2);
+    background-color: rgb(252, 249, 245);
+    box-shadow: 1px 1px #1E1E1E;
+}
+
 .catalogo {
     grid-area: cat;
     color: var(--color-primary);
@@ -95,7 +118,7 @@ header {
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.30);
     margin: 0px auto 60px auto;
 }
 

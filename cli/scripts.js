@@ -10,6 +10,25 @@
         pre.innerHTML = JSON.stringify(json, null, 2);
     });
 })*/
+// mostrar formulario
+
+const buttonLogin = document.getElementById('buttonLogin');
+const divLogin = document.getElementById('divLogin');
+const buttonPeche = document.getElementById('buttonPeche');
+
+
+buttonLogin.addEventListener('click', () =>{
+  divLogin.classList.replace("ocultar", "mostrar");
+});
+
+buttonPeche.addEventListener('click', () =>{
+  divLogin.classList.replace("mostrar", "ocultar");
+});
+
+
+
+
+//cargar libros
 function showDataInTable(librosJson) {
     const table = document.getElementById('tcatalogo');
     librosJson.forEach(item => {
