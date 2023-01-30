@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan')
 const app = express();
 const { PrismaClient } = require('@prisma/client');
+const { jwtVerify, SignJWT } = require("jose");
 const prisma = new PrismaClient();
 const port = process.env.PORT || 8080;
 app.use(morgan())
@@ -19,6 +20,35 @@ app.get('/libros', async(req, res) => {
     res.json(libros);
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/login', async (req, res) => {
+  try {
+    const {usuario, contraseña} = req.body
+    const user = await prisma.Usuario.findUnique({ where: { DNI: usuario } });
+    if (!user) {
+      res.status(401).json({ error: 'Username or password is incorrect' });
+    } else if (user.Clave_de_acceso !== contraseña) {
+      res.status(401).json({ error: 'Username or password is incorrect' });
+    } else {
+      const {guid} = user.idUsuario;
+
+    //GENERAR TOKEN Y DEVOLVER TOKEN
+    const jwtConstructor = new SignJWT( guid );
+
+    const encoder = new TextEncoder();
+    const jwt = await jwtConstructor
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+      .setIssuedAt()
+      .setExpirationTime("1h")
+      .sign(encoder.encode(process.env.JWT_KEY));
+
+    return res.cookie("token", jwt);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({ error: error.message });
   }
 });
 

@@ -70,6 +70,30 @@ window.addEventListener('load', async () => {
 });
 
 
+//sesión
+const formLogin = document.getElementById("formLogin")
+const dni = document.getElementById("dni")
+const pswd = document.getElementById("pswd")
+formLogin.addEventListener("submit", async event => {
+      event.preventDefault();
+      const data = {
+        usuario: dni.value,
+        contraseña: pswd.value
+      };
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' }
+        });
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        console.log(`usuario ${dni.value} logueado`)
+      } catch (error) {
+        console.error(error);
+      }
+      });
 //envio del pedido
     const bookForm = document.getElementById("form_pedido");
   
