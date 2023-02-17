@@ -46,6 +46,21 @@ header {
     align-items: center;
 }
 
+ul li {display: inline-block;}
+ul li:hover {background: var(--color-background);}
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 200px;
+  display: none;
+}
+ul li ul li { 
+  background: var(--color-background); 
+  display: block; 
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: #ffffff;}
+
 .login {
     border: 1px solid var(--color-background);
     border-radius: 30px;
@@ -70,21 +85,36 @@ header {
     transform: translateY(0.2rem);
 }
 
+.nav{
+    display: block;
+}
+
+.botonNav {
+    display: inline-block;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color: blue;
+    border-bottom: 1px solid blue;
+    cursor: pointer;
+}
+
 .ocultar {
     display: none;
 }
 
-.mostrar{
- background-color: rgba(24, 24, 24, 0.6);
- width: 100%;
- height: 100%;
- position: fixed;
- top: 0;
- left: 0;
- z-index: 1;
- display: flex;
+.mostrar {
+    background-color: rgba(24, 24, 24, 0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
 }
-#formLogin{
+
+#formLogin {
     justify-content: center, center;
     box-sizing: border-box;
     width: calc(fit-content * 1.2);
@@ -93,7 +123,7 @@ header {
     box-shadow: 1px 1px #1E1E1E;
 }
 
-.catalogo {
+.encabezado {
     grid-area: cat;
     color: var(--color-primary);
     font-size: var(--typography-size-h1);
@@ -109,7 +139,7 @@ header {
     border-radius: 5000px;
 }
 
-.tabla_catalogo {
+table {
     grid-area: tab;
     border-collapse: collapse separate;
     border: 7.5px solid var(--color-dark);
@@ -122,7 +152,7 @@ header {
     margin: 0px auto 60px auto;
 }
 
-.tabla_catalogo thead tr {
+th {
     color: var(--color-primary);
     font-size: var(--typography-size-th);
 }
@@ -131,20 +161,20 @@ header {
 .tabla_catalogo td {
     padding: 12px 75px;
 }*/
-.tabla_catalogo td{
+td {
     font-size: var(--typography-size-body);
 }
 
-.tabla_catalogo tbody tr {
+tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 
 
-.tabla_catalogo tbody tr:last-of-type {
+tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
-.tabla_catalogo tbody tr.active-row {
+tbody tr.active-row {
     font-weight: bold;
     color: #f3f3f3;
 }
@@ -165,15 +195,17 @@ header {
 }
 
 .footer--biblio {
-    grid-area: biblio ;
+    grid-area: biblio;
     color: var(--color-primary);
     font-size: var(--typography-size-th);
     text-align: center;
 }
+
 .footer--sn {
     grid-area: sn;
     text-align: center;
 }
+
 .footer--hyphen {
     grid-area: guion;
     margin-left: 20px;
@@ -181,12 +213,14 @@ header {
     text-align: center;
 }
 
-.footer--hyphen__error{
+.footer--hyphen__error {
     color: red;
 }
-.footer--hyphen__success{
+
+.footer--hyphen__success {
     color: green;
 }
+
 .footer--ac {
     grid-area: acad;
     text-align: center;

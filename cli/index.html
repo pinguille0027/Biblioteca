@@ -12,10 +12,20 @@
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <button class="login" id="buttonLogin">
             Log In
         </button>
+        <ul class="ocultar" id="botonMenu">
+            <li>
+              <span >Menú</span>
+              <ul>
+                <li><a href="./datos.html"> Mis datos </a></li>
+                <li><a href="./pedidos.html"> Mis pedidos </a></li>
+                <li><a href="#">Link 3</a></li>
+              </ul>
+            </li>
+          </ul>
     </header>
     <div class="ocultar" id="divLogin">
         <form id="formLogin">
@@ -27,10 +37,10 @@
     </div>
     <main>
         <section>
-            <h2 class="catalogo">Catálogo</h2>
+            <h2 class="encabezado">Catálogo</h2>
             <form id="form_pedido">
-                <table class="tabla_catalogo">
-                    <thead id="tcatalogo">
+                <table>
+                    <thead >
                         <tr>
                             <th>Sinatura</th>
                             <th>Título</th>
@@ -41,10 +51,7 @@
                             <th>pedir</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-
-                        </tr>
+                    <tbody id="tcatalogo">
                     </tbody>
                     <tfoot>
                         <tr>

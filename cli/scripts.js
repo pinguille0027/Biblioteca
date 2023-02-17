@@ -15,7 +15,8 @@
 const buttonLogin = document.getElementById('buttonLogin');
 const divLogin = document.getElementById('divLogin');
 const buttonPeche = document.getElementById('buttonPeche');
-
+const buttonMenu = document.getElementById('botonMenu');
+const nav = document.getElementById('nav');
 
 buttonLogin.addEventListener('click', () =>{
   divLogin.classList.replace("ocultar", "mostrar");
@@ -26,6 +27,16 @@ buttonPeche.addEventListener('click', () =>{
 });
 
 
+function menuButton() {
+  const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+  if (token) {
+    buttonMenu.classList.replace("ocultar", "login");
+    buttonLogin.classList.replace("login", "ocultar");
+  } else {
+    buttonLogin.classList.replace("ocultar", "login");
+    buttonMenu.classList.replace("login", "ocultar");
+  }
+};
 
 
 //cargar libros
@@ -67,6 +78,7 @@ window.addEventListener('load', async () => {
     if (!response.ok) {return;}
     const librosJson = await response.json();
     showDataInTable(librosJson);
+    menuButton();
 });
 
 
@@ -78,7 +90,7 @@ formLogin.addEventListener("submit", async event => {
       event.preventDefault();
       const data = {
         usuario: dni.value,
-        contraseña: pswd.value
+        contrasenha: pswd.value
       };
       try {
         const response = await fetch('/login', {
@@ -90,6 +102,7 @@ formLogin.addEventListener("submit", async event => {
           throw new Error(response.statusText);
         }
         console.log(`usuario ${dni.value} logueado`)
+        menuButton();
       } catch (error) {
         console.error(error);
       }
@@ -122,7 +135,21 @@ formLogin.addEventListener("submit", async event => {
       }
     });
     
-    
+//direccionamientos
+const botonDatos = document.getElementById("botonDatos")
+
+botonDatos.addEventListener('click', async () =>{
+  try {
+    const response = await fetch ('/misdatos',{
+      method: 'GET'
+    })
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
+const botonPedidos = document.getElementById("botonPedidos")
     
     
 
