@@ -1,4 +1,56 @@
+const buttonLogin = document.getElementById('buttonLogin');
+const divLogin = document.getElementById('divLogin');
+const buttonPeche = document.getElementById('buttonPeche');
+const buttonMenu = document.getElementById('botonMenu');
+
+buttonLogin.addEventListener('click', () =>{
+  divLogin.classList.replace("ocultar", "mostrar");
+});
+
+buttonPeche.addEventListener('click', () =>{
+  divLogin.classList.replace("mostrar", "ocultar");
+});
+
+
+function menuButton() {
+  const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+  if (token) {
+    buttonMenu.classList.replace("ocultar", "login");
+    buttonLogin.classList.replace("login", "ocultar");
+  } else {
+    buttonLogin.classList.replace("ocultar", "login");
+    buttonMenu.classList.replace("login", "ocultar");
+  }
+};
+
+//sesión
+const formLogin = document.getElementById("formLogin")
+const dni = document.getElementById("dni")
+const pswd = document.getElementById("pswd")
+formLogin.addEventListener("submit", async event => {
+      event.preventDefault();
+      const data = {
+        usuario: dni.value,
+        contrasenha: pswd.value
+      };
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' }
+        });
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        console.log(`usuario ${dni.value} logueado`)
+        menuButton();
+      } catch (error) {
+        console.error(error);
+      }
+      });
+
 window.addEventListener('load', async () => {
+    menuButton();
     const response = await fetch('/misdatos');
 
     if (response.ok) {
@@ -22,14 +74,8 @@ window.addEventListener('load', async () => {
         nombreTituloCell.innerHTML = 'Nombre';
         const nombreContenidoCell = document.createElement('td');
         nombreContenidoCell.innerHTML = datosJson.nombre + ' ' + datosJson.apellidos;
-        const nombreButtonCell = document.createElement('td');
-        const nombretext = document.createElement("input");
-        nombretext.type = "text";
-        nombretext.name = "cambioNombre";
-        nombreButtonCell.appendChild(nombretext);
         nombreRow.appendChild(nombreTituloCell);
         nombreRow.appendChild(nombreContenidoCell);
-        nombreRow.appendChild(nombreButtonCell);
         table.appendChild(nombreRow);
 
 
@@ -47,5 +93,9 @@ window.addEventListener('load', async () => {
         tlfRow.appendChild(tlfContenidoCell);
         tlfRow.appendChild(tlfbuttonCell);
         table.appendChild(tlfRow);
+    }
+    if (!response.ok) {
+      
+      throw new Error(response.statusText);
     }
 });

@@ -54,8 +54,24 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/pedido', async (req, res) => {
+  const autorizacion = req.cookies.token;
+  if (!autorizacion) {
+    res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+    res.setHeader('Refresh', '2; url=/');
+    return res.sendStatus(401);
+  }
   try {
-    const { sinatura, idUsuario } = req.body;
+    const encoder = new TextEncoder();
+    const { payload, expired } = await jwtVerify(
+      autorizacion,
+      encoder.encode(process.env.JWT_KEY)
+    );
+    if (expired) {
+      res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+      res.setHeader('Refresh', '2; url=/');
+      return res.sendStatus(401);
+    }
+    const { sinatura } = req.body;
    
     
     const newBook = await prisma.pedidos.create({
@@ -63,7 +79,7 @@ app.post('/pedido', async (req, res) => {
         
         Fecha_Pedido: new Date(),
         Fecha_Devolucion: new Date(new Date().getTime() + (15 * 24 * 60 * 60 * 1000)),
-        Usuario: {connect: { Id: Number(idUsuario)}}, 
+        Usuario: {connect: { Id: Number(payload.guid)}}, 
         Libros: { connect: { Sinatura: Number(sinatura) }}
       }
     });
@@ -79,20 +95,59 @@ app.get('/misdatos', async(req, res) => {
   console.log(req.cookies.token);
   if (!autorizacion) {
     res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+    res.setHeader('Refresh', '2; url=/');
     return res.sendStatus(401);
 }
   try {
     const encoder = new TextEncoder();
-    const { payload } = await jwtVerify(
+    const { payload, expired } = await jwtVerify(
       autorizacion,
       encoder.encode(process.env.JWT_KEY)
     );
+    if (expired) {
+      res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+      res.setHeader('Refresh', '2; url=/');
+      return res.sendStatus(401);
+    }
       console.log(payload)
     const loguser = await prisma.Usuario.findUnique({ where: { Id: payload.guid } });
     delete loguser.Id;
     delete loguser.Clave_de_acceso;
     res.status(200).json(loguser);
 
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+app.get('/mispedidos', async(req, res) => {
+  const autorizacion = req.cookies.token;
+  console.log(req.cookies.token);
+  if (!autorizacion) {
+    res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+    res.setHeader('Refresh', '2; url=/');
+    return res.sendStatus(401);
+}
+  try {
+    const encoder = new TextEncoder();
+    const { payload, expired } = await jwtVerify(
+      autorizacion,
+      encoder.encode(process.env.JWT_KEY)
+    );
+    if (expired) {
+      res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+      res.setHeader('Refresh', '2; url=/');
+      return res.sendStatus(401);
+    }
+      console.log(payload)
+  const misPedidos = await prisma.Pedidos.findMany({ where: {Id_Usuario: payload.guid,}, 
+  select: { Libro_prestado: true, Fecha_Pedido: true, Fecha_Devolucion: true,
+    Libros: {
+      select: {
+        Titulo: true,
+        Autor: true,
+      },},
+  }})
+  res.status(200).json(misPedidos);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

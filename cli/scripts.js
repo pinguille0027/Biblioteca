@@ -16,7 +16,6 @@ const buttonLogin = document.getElementById('buttonLogin');
 const divLogin = document.getElementById('divLogin');
 const buttonPeche = document.getElementById('buttonPeche');
 const buttonMenu = document.getElementById('botonMenu');
-const nav = document.getElementById('nav');
 
 buttonLogin.addEventListener('click', () =>{
   divLogin.classList.replace("ocultar", "mostrar");
@@ -117,7 +116,6 @@ formLogin.addEventListener("submit", async event => {
       for (const book of selectedBooks) {
         const data = {
           sinatura: book.value,
-          idUsuario: '1'
         };
         try {
           const response = await fetch('/pedido', {

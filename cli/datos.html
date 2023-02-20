@@ -12,18 +12,43 @@
 </head>
 
 <body>
-    <header>
-        <button class="login" id="botonMenu">
-            Menú
+    <header id="header">
+        <button class="login" id="buttonLogin">
+            Log In
         </button>
+        <ul class="ocultar" id="botonMenu">
+            <li>
+                <span>Menú</span>
+                <ul>
+                    <li><a href="./index.html"> Inicio </a></li>
+                    <li><a href="./pedidos.html"> Mis pedidos </a></li>
+                    <li><a href="#">Link 3</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="ocultar" id="divLogin">
+            <form id="formLogin">
+                <button id="buttonPeche">X</button> <br>
+                <label for="">DNI</label> <input type="text" name="" id="dni"> <br>
+                <label for="">Contraseña</label> <input type="password" name="" id="pswd"> <br>
+                <input type="submit" value="enviar">
+            </form>
+        </div>
     </header>
-    <pre id="req-test"></pre>
     <main>
         <section>
             <h2 class="encabezado">Mis datos</h2>
             <form id="form_datos">
-                <table id="tablaDatos">
-
+                <table>
+                    <tbody id="tablaDatos">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"> 
+                                <input type="submit" value=">>" id="b_enviar">
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </form>
         </section>
