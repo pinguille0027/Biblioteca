@@ -17,8 +17,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    outline: 1.5px solid red;
+    /*box-sizing: border-box;
+    outline: 1.5px solid red;*/
 }
 
 body {
@@ -29,17 +29,18 @@ body {
     letter-spacing: var(--typography-spacing-body);
     line-height: 105%;
     position: relative;
+    overflow-x: hidden;
 }
 
 main {
     width: 100%;
-    overflow-x: hidden;
+
 }
 
 header {
     background-color: var(--color-dark);
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     padding: 1.5rem;
     display: flex;
     justify-content: end;
@@ -49,26 +50,54 @@ header {
 ul li {
     display: inline-block;
 }
-ul li:hover {background: var(--color-background);}
-ul li:hover ul {display: block;}
+
+ul li:hover {
+    background: var(--color-background);
+}
+
+ul li:hover ul {
+    display: block;
+}
+
 ul li ul {
-  position: absolute;
-  width: 200px;
-  display: none;
+    position: absolute;
+    width: fit-content;
+    display: none;
+    border: 2px solid var(--color-dark);
+    border-top: none;
 }
-ul li ul li { 
-  background: var(--color-background); 
-  display: block; 
-  overflow-x: hidden;
+
+ul li ul li {
+    background: var(--color-background);
+    display: block;
+    padding: 3px;
+    font-size: 20px;
 }
-ul li ul li a {display:block !important;} 
-ul li ul li:hover {background: #ffffff;}
+
+ul li ul li a,
+ul li ul li button {
+    display: block !important;
+}
+
+ul li ul li:hover {
+    background: #f3f3f3;
+}
+
+#cerrarSesion {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 18px;
+}
 
 .login {
     border: 1px solid var(--color-background);
     border-radius: 30px;
     padding-inline: 1rem;
     cursor: pointer;
+    margin-right: 5%;
 
     font-size: var(--typography-size-login);
     background-color: var(--color-background);
@@ -82,11 +111,7 @@ ul li ul li:hover {background: #ffffff;}
     background-color: blanchedalmond;
 }
 
-.login:active {
-    background-color: rgb(243, 192, 150);
-    box-shadow: 0.5rem 0.2rem 0.5rem var(--color-primary);
-    transform: translateY(0.2rem);
-}
+
 
 
 .ocultar {
@@ -147,6 +172,11 @@ th {
     font-size: var(--typography-size-th);
 }
 
+tbody>tr>th {
+    padding-right: 2em;
+    text-align: justify;
+}
+
 /*.tabla_catalogo th,
 .tabla_catalogo td {
     padding: 12px 75px;
@@ -159,14 +189,17 @@ tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 
+th,
+td {
+    padding: 0.5em;
+}
 
 tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
-tbody tr.active-row {
-    font-weight: bold;
-    color: #f3f3f3;
+tbody tr:hover {
+    text-decoration: underline;
 }
 
 .footer {
@@ -203,13 +236,7 @@ tbody tr.active-row {
     text-align: center;
 }
 
-.footer--hyphen__error {
-    color: red;
-}
 
-.footer--hyphen__success {
-    color: green;
-}
 
 .footer--ac {
     grid-area: acad;

@@ -62,11 +62,11 @@ app.post('/pedido', async (req, res) => {
   }
   try {
     const encoder = new TextEncoder();
-    const { payload, expired } = await jwtVerify(
+    const { payload, exp } = await jwtVerify(
       autorizacion,
       encoder.encode(process.env.JWT_KEY)
     );
-    if (expired) {
+    if (exp) {
       res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
       res.setHeader('Refresh', '2; url=/');
       return res.sendStatus(401);
@@ -100,11 +100,11 @@ app.get('/misdatos', async(req, res) => {
 }
   try {
     const encoder = new TextEncoder();
-    const { payload, expired } = await jwtVerify(
+    const { payload, exp } = await jwtVerify(
       autorizacion,
       encoder.encode(process.env.JWT_KEY)
     );
-    if (expired) {
+    if (exp) {
       res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
       res.setHeader('Refresh', '2; url=/');
       return res.sendStatus(401);
@@ -129,11 +129,11 @@ app.get('/mispedidos', async(req, res) => {
 }
   try {
     const encoder = new TextEncoder();
-    const { payload, expired } = await jwtVerify(
+    const { payload, exp } = await jwtVerify(
       autorizacion,
       encoder.encode(process.env.JWT_KEY)
     );
-    if (expired) {
+    if (exp) {
       res.setHeader('Set-Cookie', `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
       res.setHeader('Refresh', '2; url=/');
       return res.sendStatus(401);
@@ -164,5 +164,11 @@ app.use(express.static(path.join(__dirname, '../cli/')));
 }
 });
 */
+app.get('/logout', (req, res) => {
+  res.clearCookie('token');
+
+  res.redirect('/');
+});
+
 app.listen(port);
 console.log('Server started at http://localhost:' + port);

@@ -21,40 +21,41 @@
                 <span>Menú</span>
                 <ul>
                     <li><a href="./index.html"> Inicio </a></li>
-                    <li><a href="./datos.html"> Mis datos </a></li>
+                    <li><a href="./pedidos.html"> Mis pedidos </a></li>
                     <li><a href="#">Link 3</a></li>
                 </ul>
             </li>
         </ul>
-        <div class="ocultar" id="divLogin">
+        
+    </header>
+    <div class="ocultar" id="divLogin">
             <form id="formLogin">
                 <button id="buttonPeche">X</button> <br>
                 <label for="">DNI</label> <input type="text" name="" id="dni"> <br>
                 <label for="">Contraseña</label> <input type="password" name="" id="pswd"> <br>
                 <input type="submit" value="enviar">
             </form>
-        </div>
-    </header>
+    </div>
     <main>
         <section>
-            <h2 class="encabezado">Mis pedidos</h2>
+            <h2 class="encabezado">Mis datos</h2>
+            <form id="form_datos">
                 <table>
-                    <thead >
-                        <tr>
-                            <th>Sinatura</th>
-                            <th>Título</th>
-                            <th>Autor</th>
-                            <th>Fecha del prestamo</th>
-                            <th>Fecha de devolución</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaPedidos">
+                    <tbody id="tablaDatos">
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"> 
+                                <input type="submit" value=">>" id="b_enviar">
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
+            </form>
         </section>
     </main>
 
-    <script src="./pedidos.js"></script>
+    <script src="./datos.js"></script>
 </body>
 
 </html>

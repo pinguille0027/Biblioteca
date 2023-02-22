@@ -12,7 +12,7 @@ buttonPeche.addEventListener('click', () =>{
 });
 
 
-function menuButton() {
+function toggleMenuButton() {
   const token = document.cookie.split('; ').find(row => row.startsWith('token='));
   if (token) {
     buttonMenu.classList.replace("ocultar", "login");
@@ -43,14 +43,14 @@ formLogin.addEventListener("submit", async event => {
           throw new Error(response.statusText);
         }
         console.log(`usuario ${dni.value} logueado`)
-        menuButton();
+        toggleMenuButton();
       } catch (error) {
         console.error(error);
       }
       });
 
 window.addEventListener('load', async () => {
-    menuButton();
+    toggleMenuButton();
     const response = await fetch('/mispedidos');
 
     if (response.ok) {
@@ -65,9 +65,9 @@ window.addEventListener('load', async () => {
       const autorCell = document.createElement('td');
       autorCell.innerHTML = item.Libros.Autor || "No especificado";
       const fechaPedidoCell = document.createElement('td');
-      fechaPedidoCell.innerHTML = item.Fecha_Pedido;
+      fechaPedidoCell.innerHTML = new Date(item.Fecha_Pedido).toLocaleDateString('es-ES');
       const fechaDevolucionCell = document.createElement('td');
-      fechaDevolucionCell.innerHTML = item.Fecha_Devolucion;
+      fechaDevolucionCell.innerHTML = new Date(item.Fecha_Devolucion).toLocaleDateString('es-ES');;
       row.appendChild(sinaturaCell);
       row.appendChild(tituloCell);
       row.appendChild(autorCell);

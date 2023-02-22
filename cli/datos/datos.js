@@ -12,7 +12,7 @@ buttonPeche.addEventListener('click', () =>{
 });
 
 
-function menuButton() {
+function toggleMenuButton() {
   const token = document.cookie.split('; ').find(row => row.startsWith('token='));
   if (token) {
     buttonMenu.classList.replace("ocultar", "login");
@@ -43,14 +43,14 @@ formLogin.addEventListener("submit", async event => {
           throw new Error(response.statusText);
         }
         console.log(`usuario ${dni.value} logueado`)
-        menuButton();
+        toggleMenuButton();
       } catch (error) {
         console.error(error);
       }
       });
 
 window.addEventListener('load', async () => {
-    menuButton();
+    toggleMenuButton();
     const response = await fetch('/misdatos');
 
     if (response.ok) {
@@ -59,7 +59,7 @@ window.addEventListener('load', async () => {
         const table = document.getElementById('tablaDatos');
 
         const dniRow = document.createElement('tr');
-        const dniTituloCell = document.createElement('td');
+        const dniTituloCell = document.createElement('th');
         dniTituloCell.innerHTML = 'DNI';
         const dniContenidoCell = document.createElement('td');
         dniContenidoCell.colspan = 2 ;
@@ -70,7 +70,7 @@ window.addEventListener('load', async () => {
 
 
         const nombreRow = document.createElement('tr');
-        const nombreTituloCell = document.createElement('td');
+        const nombreTituloCell = document.createElement('th');
         nombreTituloCell.innerHTML = 'Nombre';
         const nombreContenidoCell = document.createElement('td');
         nombreContenidoCell.innerHTML = datosJson.nombre + ' ' + datosJson.apellidos;
@@ -80,7 +80,7 @@ window.addEventListener('load', async () => {
 
 
         const tlfRow = document.createElement('tr');
-        const tlfTituloCell = document.createElement('td');
+        const tlfTituloCell = document.createElement('th');
         tlfTituloCell.innerHTML = 'Teléfono';
         const tlfContenidoCell = document.createElement('td');
         tlfContenidoCell.innerHTML = datosJson.Telefono;
