@@ -13,7 +13,7 @@ app.use(cookieParser())
 
 // sendFile will go here
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../cli/index.html'));
+  res.sendFile(path.join(__dirname, '../cli/index/index.html'));
 });
 
 app.get('/libros', async(req, res) => {
@@ -152,8 +152,8 @@ app.get('/mispedidos', async(req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 app.use(express.static(path.join(__dirname, '../cli/')));
+app.use(express.static(path.join(__dirname, '../cli/index/')));
 
 /*app.get('/', async(req, res) => {
   try {
