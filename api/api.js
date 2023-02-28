@@ -152,8 +152,8 @@ app.get('/mispedidos', async(req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-app.use(express.static(path.join(__dirname, '../cli/')));
-app.use(express.static(path.join(__dirname, '../cli/index/')));
+app.use(express.static(path.join(__dirname, './public/')));
+app.use(express.static(path.join(__dirname, './public/index/')));
 
 /*app.get('/', async(req, res) => {
   try {
