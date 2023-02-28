@@ -13,7 +13,7 @@ app.use(cookieParser())
 
 // sendFile will go here
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../cli/index/index.html'));
+  res.sendFile(path.join(__dirname, './public/index/index.html'));
 });
 
 app.get('/libros', async(req, res) => {
